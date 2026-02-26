@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patienteninformationen | NovaDent Praxis</title>
+    <meta name="description"
+        content="Alle Informationen zu Ihrem Besuch: Ablauf, Versicherungen und häufig gestellte Fragen (FAQ).">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Modern Native Accordion Styling - Highly Polished */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details.premium-faq {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(203, 213, 225, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        details.premium-faq:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            border-color: rgba(30, 58, 138, 0.15);
+        }
+
+        details.premium-faq[open] {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        summary.premium-summary {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 500;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            transition: background-color 0.3s, color 0.3s;
+            color: var(--text-dark);
+        }
+
+        details.premium-faq[open] summary.premium-summary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding-bottom: 1rem;
+        }
+
+        summary.premium-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary.premium-summary::after {
+            content: '\f067';
+            /* fa-plus */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-color);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        details.premium-faq[open] summary.premium-summary::after {
+            content: '\f068';
+            /* fa-minus */
+            transform: rotate(180deg);
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .premium-details-content {
+            padding: 0 2rem 1.5rem 2rem;
+            color: var(--text-muted);
+            background-color: var(--secondary-color);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Timeline / Process Styling */
+        .process-steps {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            border-top: 4px solid transparent;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .process-step:nth-child(1) {
+            border-top-color: var(--primary-color);
+        }
+
+        .process-step:nth-child(2) {
+            border-top-color: var(--accent-color);
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: -3.6rem;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
+        }
+
+        .process-step:nth-child(2)::before {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(194, 159, 99, 0.1);
+        }
+
+        .step-icon-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Premium Insurance Banner */
+        .insurance-banner {
+            background: linear-gradient(135deg, var(--primary-color), rgba(30, 58, 138, 0.9));
+            color: white;
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insurance-banner::after {
+            content: '\f47f';
+            /* fa-hand-holding-medical */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -20px;
+            bottom: -40px;
+            font-size: 18rem;
+            color: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+        }
+
+        @media (max-width: 900px) {
+            .insurance-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-tooth"></i>
+                <span style="color: var(--primary-color);">Nova<strong>Dent</strong></span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="leistungen.html" class="nav-link">Leistungen</a></li>
+                    <li><a href="ueber-uns.html" class="nav-link">Über uns</a></li>
+                    <li><a href="patienten.html" class="nav-link active">Patienteninfos</a></li>
+                    <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                    <li><a href="kontakt.html" class="btn btn-primary"
+                            style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">Termin vereinbaren</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header"
+            style="background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.95)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; padding: 180px 0 100px; text-align: center; color: white;">
+            <div class="container fade-in">
+                <div
+                    style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; margin-bottom: 1.5rem;">
+                    <i class="fa-solid fa-notes-medical" style="font-size: 1.8rem; color: var(--accent-color);"></i>
+                </div>
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem; color: white;">Patienteninfos & FAQ</h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.85);">
+                    Wir machen Ihren Zahnarztbesuch so angenehm und transparent wie möglich. Alles Wichtige auf einen
+                    Blick.
+                </p>
+            </div>
+        </section>
+
+        <!-- Process Timeline -->
+        <section class="section section-bg">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <span
+                        style="color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">Organisiert
+                        & Entspannt</span>
+                    <h2 style="font-size: 2.5rem; margin-top: 0.5rem;">Der Ablauf in unserer Praxis</h2>
+                </div>
+
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="process-steps fade-in">
+
+                        <!-- Step 1 -->
+                        <div class="process-step">
+                            <div class="step-icon-wrap"><i class="fa-regular fa-calendar-check"></i></div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">1. Der erste Termin</h3>
+                            <p class="text-muted" style="font-size: 1.1rem; line-height: 1.7;">
+                                Bei Ihrem ersten Besuch nehmen wir uns besonders viel Zeit für ein ausführliches
+                                Kennenlerngespräch und eine gründliche, schmerzfreie Untersuchung. Um den Vorgang zu
+                                beschleunigen, bringen Sie gerne aktuelle Röntgenbilder und Ihre Versichertenkarte mit.
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="process-step">
+                            <div class="step-icon-wrap"
+                                style="color: var(--accent-color); background: rgba(194, 159, 99, 0.1);"><i
+                                    class="fa-solid fa-file-invoice"></i></div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">2. Transparenter Behandlungsplan</h3>
+                            <p class="text-muted" style="font-size: 1.1rem; line-height: 1.7;">
+                                Basierend auf unserer Diagnose erstellen wir im Anschluss gemeinsam mit Ihnen einen
+                                klaren und detaillierten Behandlungs- sowie Kostenplan. Wir beantworten all Ihre Fragen
+                                vollumfänglich, bevor wir mit der eigentlichen Therapie beginnen.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Insurance Section -->
+        <section class="section" style="padding-top: 2rem;">
+            <div class="container fade-in">
+                <div class="insurance-banner">
+                    <div style="position: relative; z-index: 1;">
+                        <span
+                            style="color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">Kosten
+                            & Abrechnung</span>
+                        <h2 style="font-size: 2.5rem; color: white; margin-top: 0.5rem; margin-bottom: 1rem;">Wir
+                            behandeln alle Patienten</h2>
+                        <ul
+                            style="list-style-type: none; margin-left: 0; padding-left: 0; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 1rem;"><i
+                                    class="fa-solid fa-circle-check" style="color: var(--accent-color);"></i>
+                                Gesetzliche Krankenversicherungen (GKV)</li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 1rem;"><i
+                                    class="fa-solid fa-circle-check" style="color: var(--accent-color);"></i> Private
+                                Krankenversicherungen (PKV)</li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 1rem;"><i
+                                    class="fa-solid fa-circle-check" style="color: var(--accent-color);"></i> Beihilfe &
+                                Zusatzversicherungen</li>
+                        </ul>
+                    </div>
+                    <div
+                        style="max-width: 350px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 16px; position: relative; z-index: 1; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="text-align: center; margin-bottom: 1rem;">
+                            <i class="fa-regular fa-id-card" style="font-size: 3rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h4 style="color: white; text-align: center; margin-bottom: 0.5rem; font-size: 1.2rem;">
+                            Krankenversichertenkarte</h4>
+                        <p
+                            style="color: rgba(255,255,255,0.9); text-align: center; font-size: 0.95rem; margin-bottom: 0;">
+                            Bitte vergessen Sie nicht, zu jedem ersten Termin im Quartal Ihre elektronische
+                            Gesundheitskarte mitzubringen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium FAQ Section -->
+        <section class="section section-bg">
+            <div class="container fade-in">
+                <div class="text-center" style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem;">Häufig gestellte Fragen</h2>
+                    <p class="text-muted" style="max-width: 600px; margin: 0 auto; font-size: 1.1rem;">Hier finden Sie
+                        direkte Antworten auf die wichtigsten Fragen unserer Patienten.</p>
+                </div>
+
+                <div class="faq-container">
+                    <details class="premium-faq" open>
+                        <summary class="premium-summary">Nehmen Sie Neupatienten auf?</summary>
+                        <div class="premium-details-content">
+                            Ja, wir freuen uns sehr über Ihr Vertrauen und nehmen aktuell neue Patientinnen und
+                            Patienten auf. Vereinbaren Sie gerne jederzeit einen Termin für ein erstes Kennenlernen in
+                            unserer modernen Praxis.
+                        </div>
+                    </details>
+
+                    <details class="premium-faq">
+                        <summary class="premium-summary">Was soll ich tun, wenn ich Schmerzen habe?</summary>
+                        <div class="premium-details-content">
+                            Bei akuten Zahnschmerzen rufen Sie uns bitte direkt morgens ab 08:00 Uhr an. Wir haben
+                            täglich Pufferzeiten für Schmerzpatienten reserviert, um Ihnen noch am gleichen Tag helfen
+                            zu können und Sie schnellstmöglich von Ihren Schmerzen zu befreien.
+                        </div>
+                    </details>
+
+                    <details class="premium-faq">
+                        <summary class="premium-summary">Bieten Sie Behandlungen für Angstpatienten an?</summary>
+                        <div class="premium-details-content">
+                            Selbstverständlich. Angst vorm Zahnarzt ist weit verbreitet. Wir nehmen Ihre Ängste
+                            besonders ernst, erklären Ihnen jeden Schritt im Detail und arbeiten mit besonders sanften,
+                            stressfreien Methoden. Unser Ziel ist es, in entspannter Atmosphäre Vertrauen aufzubauen.
+                        </div>
+                    </details>
+
+                    <details class="premium-faq">
+                        <summary class="premium-summary">Kann ich meinen Termin online verschieben?</summary>
+                        <div class="premium-details-content">
+                            Wenn Sie einen vereinbarten Termin nicht wahrnehmen können, bitten wir Sie fairerweise, uns
+                            rechtzeitig (mindestens 24 Stunden vorher) telefonisch oder per E-Mail Bescheid zu geben.
+                            Eine reine Online-Verschiebung bieten wir aktuell nicht an, da wir flexibler auf Ihre
+                            Bedürfnisse reagieren möchten, wenn Sie kurzfristig absagen müssen.
+                        </div>
+                    </details>
+
+                    <details class="premium-faq">
+                        <summary class="premium-summary">Wie oft sollte ich zur professionellen Zahnreinigung?</summary>
+                        <div class="premium-details-content">
+                            In der Regel empfehlen wir eine professionelle Zahnreinigung ein- bis zweimal im Jahr. Bei
+                            chronischer Parodontitis oder anderen speziellen Befunden ist ein deutlich kürzerer Abstand
+                            (z.B. alle drei bis vier Monate) zwingend sinnvoll, um die Zahngesundheit langfristig zu
+                            erhalten. Dies besprechen wir individuell.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo"
+                        style="color: white; margin-bottom: 1.5rem; display: inline-flex;">
+                        <i class="fa-solid fa-tooth"></i>
+                        <span style="color: white;">Nova<strong>Dent</strong></span>
+                    </a>
+                    <p style="color: #cbd5e1; margin-bottom: 1.5rem;">
+                        Ihre Praxis für eine sanfte und moderne Zahnmedizin. Wir schenken Ihnen ein Lächeln.
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#"
+                            style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s;"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s;"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="ueber-uns.html">Über unser Team</a></li>
+                        <li><a href="leistungen.html">Leistungsspektrum</a></li>
+                        <li><a href="patienten.html">Patienten & FAQ</a></li>
+                        <li><a href="kontakt.html">Kontakt & Anfahrt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Öffnungszeiten</h4>
+                    <ul class="footer-links" style="color: #cbd5e1;">
+                        <li style="display: flex; justify-content: space-between;"><span>Mo, Di, Do, Fr:</span>
+                            <span>08:00 - 18:00 Uhr</span>
+                        </li>
+                        <li style="display: flex; justify-content: space-between;"><span>Mittwoch:</span> <span>08:00 -
+                                14:00 Uhr</span></li>
+                        <li
+                            style="display: flex; justify-content: space-between; margin-top: 0.5rem; color: var(--accent-color);">
+                            <span>Termine nach Vereinbarung</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                Lange Str. 16 a<br>
+                                Seesen, Niedersachsen
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <a href="tel:15566284478" style="color: inherit;">15566284478</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <a href="mailto:info@novadent.de" style="color: inherit;">info@novadent.de</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 NovaDent Praxis. Alle Rechte vorbehalten. | <a href="impressum.html"
+                        style="color: inherit; text-decoration: underline;">Impressum</a> | <a href="#"
+                        style="color: inherit; text-decoration: underline;">Datenschutz</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

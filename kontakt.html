@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt & Anfahrt | Zahnarztpraxis Dr. Muster</title>
+    <meta name="description"
+        content="Nehmen Sie Kontakt mit uns auf. Vereinbaren Sie einen Termin online oder finden Sie den Weg zu unserer Praxis.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info-card {
+            background-color: var(--secondary-color);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            height: 100%;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-tooth"></i>
+                <span style="color: var(--primary-color);">Nova<strong>Dent</strong></span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="leistungen.html" class="nav-link">Leistungen</a></li>
+                    <li><a href="ueber-uns.html" class="nav-link">Über uns</a></li>
+                    <li><a href="patienten.html" class="nav-link">Patienteninfos</a></li>
+                    <li><a href="kontakt.html" class="nav-link active">Kontakt</a></li>
+                    <li><a href="kontakt.html" class="btn btn-primary"
+                            style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">Termin vereinbaren</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header"
+            style="background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.95)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; padding: 180px 0 100px; text-align: center; color: white;">
+            <div class="container fade-in">
+                <div
+                    style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; margin-bottom: 1.5rem;">
+                    <i class="fa-solid fa-envelope-open-text"
+                        style="font-size: 1.8rem; color: var(--accent-color);"></i>
+                </div>
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem; color: white;">Kontakt & Anfahrt</h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.85);">
+                    Wir freuen uns darauf, Sie in unserer Praxis begrüßen zu dürfen.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Contact Section -->
+        <section class="section">
+            <div class="container">
+                <div class="grid grid-2" style="gap: 3rem;">
+
+                    <!-- Contact Form -->
+                    <div class="fade-in" style="transition-delay: 0.1s;">
+                        <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Schreiben Sie uns</h2>
+                        <p class="text-muted" style="margin-bottom: 2rem;">Nutzen Sie unser Kontaktformular für
+                            Terminanfragen oder sonstige Anliegen. Wir melden uns schnellstmöglich bei Ihnen zurück.</p>
+
+                        <form action="#" method="get" class="card" style="padding: 2rem;">
+                            <div class="grid grid-2" style="gap: 1.5rem; margin-bottom: 1.5rem;">
+                                <div>
+                                    <label for="vorname" class="form-label">Vorname</label>
+                                    <input type="text" id="vorname" class="form-control" required>
+                                </div>
+                                <div>
+                                    <label for="nachname" class="form-label">Nachname</label>
+                                    <input type="text" id="nachname" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">E-Mail Adresse</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefon" class="form-label">Telefonnummer</label>
+                                <input type="tel" id="telefon" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nachricht" class="form-label">Ihre Nachricht oder Terminwunsch</label>
+                                <textarea id="nachricht" class="form-control" required></textarea>
+                            </div>
+
+                            <div class="form-group"
+                                style="display: flex; gap: 0.5rem; align-items: flex-start; margin-bottom: 2rem;">
+                                <input type="checkbox" id="datenschutz" required style="margin-top: 5px;">
+                                <label for="datenschutz" class="text-muted" style="font-size: 0.9rem;">Ich stimme zu,
+                                    dass meine Daten zur Bearbeitung meiner Anfrage verarbeitet werden. (<a href="#"
+                                        style="color: var(--primary-color); text-decoration: underline;">Datenschutzerklärung</a>)</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Nachricht senden</button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info & Map -->
+                    <div class="fade-in" style="transition-delay: 0.2s;">
+                        <div class="contact-info-card card"
+                            style="background: white; border-top: 4px solid var(--accent-color); box-shadow: var(--shadow-md);">
+                            <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color);">Kontaktdaten
+                            </h2>
+
+                            <div class="info-row">
+                                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div>
+                                    <h4 style="font-size: 1.1rem; margin-bottom: 0.2rem;">Adresse</h4>
+                                    <p class="text-muted">Lange Str. 16 a<br>Seesen, Niedersachsen</p>
+                                </div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div>
+                                    <h4 style="font-size: 1.1rem; margin-bottom: 0.2rem;">Telefon</h4>
+                                    <a href="tel:15566284478" class="text-muted"
+                                        style="transition: color 0.3s;">15566284478</a>
+                                    <p class="text-muted" style="font-size: 0.85rem; margin-top: 0.2rem;">Bei Notfällen
+                                        rufen Sie bitte direkt an.</p>
+                                </div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div>
+                                    <h4 style="font-size: 1.1rem; margin-bottom: 0.2rem;">E-Mail</h4>
+                                    <a href="mailto:info@novadent.de" class="text-muted"
+                                        style="transition: color 0.3s;">info@novadent.de</a>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 3rem;">
+                                <h4 style="font-size: 1.1rem; margin-bottom: 1rem;">Anfahrt & Parken</h4>
+                                <p class="text-muted mb-md">Kostenfreie Patientenparkplätze finden Sie direkt hinter
+                                    unserer Praxis im Hof.</p>
+                                <p class="text-muted"><strong>ÖPNV:</strong> Buslinie 10 und 12, Haltestelle "Am
+                                    Marktplatz" (2 Gehminuten).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Full Width -->
+        <section style="height: 450px; width: 100%; position: relative;">
+            <iframe
+                src="https://maps.google.com/maps?q=Lange%20Str.%2016a%2C%20Seesen%2C%20Niedersachsen&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo"
+                        style="color: white; margin-bottom: 1.5rem; display: inline-flex;">
+                        <i class="fa-solid fa-tooth"></i>
+                        <span style="color: white;">Nova<strong>Dent</strong></span>
+                    </a>
+                    <p style="color: #cbd5e1; margin-bottom: 1.5rem;">
+                        Ihre Praxis für eine sanfte und moderne Zahnmedizin. Wir schenken Ihnen ein Lächeln.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="ueber-uns.html">Über unser Team</a></li>
+                        <li><a href="leistungen.html">Leistungsspektrum</a></li>
+                        <li><a href="patienten.html">Patienten & FAQ</a></li>
+                        <li><a href="kontakt.html">Kontakt & Anfahrt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Öffnungszeiten</h4>
+                    <ul class="footer-links" style="color: #cbd5e1;">
+                        <li style="display: flex; justify-content: space-between;"><span>Mo, Di, Do, Fr:</span>
+                            <span>08:00 - 18:00 Uhr</span>
+                        </li>
+                        <li style="display: flex; justify-content: space-between;"><span>Mittwoch:</span> <span>08:00 -
+                                14:00 Uhr</span></li>
+                        <li
+                            style="display: flex; justify-content: space-between; margin-top: 0.5rem; color: var(--accent-color);">
+                            <span>Termine nach Vereinbarung</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fa-solid fa-location-dot"></i>
+                            <div>Lange Str. 16 a<br>Seesen, Niedersachsen</div>
+                        </li>
+                        <li><i class="fa-solid fa-phone"></i>
+                            <div><a href="tel:15566284478" style="color: inherit;">15566284478</a></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 NovaDent Praxis. Alle Rechte vorbehalten. | <a href="impressum.html"
+                        style="color: inherit; text-decoration: underline;">Impressum</a> | <a href="datenschutz.html"
+                        style="color: inherit; text-decoration: underline;">Datenschutz</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
