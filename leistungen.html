@@ -4,17 +4,826 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unsere Leistungen | Zahnarztpraxis Dr. Muster</title>
+    <title>Unsere Leistungen | NovaDent Zahnarztpraxis</title>
     <meta name="description"
-        content="Übersicht unserer zahnmedizinischen Leistungen: Prophylaxe, Implantate, Ästhetik und mehr für Ihre Zahngesundheit.">
+        content="Entdecken Sie unser umfassendes Leistungsspektrum: Prophylaxe, Implantologie, Bleaching, Ästhetische Zahnmedizin, Kinderzahnheilkunde und Parodontologie.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* ===================================
+           PAGE-SPECIFIC STYLES: leistungen.html
+           =================================== */
+
+        /* --- Hero Banner --- */
+        .leistungen-hero {
+            padding-top: 110px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #0ea5e9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leistungen-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1606265752439-1ebeb995cd0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            opacity: 0.05;
+        }
+
+        .leistungen-hero .hero-layout {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .leistungen-hero .hero-text {
+            text-align: left;
+        }
+
+        .leistungen-hero .hero-visual {
+            position: relative;
+        }
+
+        .leistungen-hero .hero-visual img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            display: block;
+        }
+
+        /* Floating badge on hero image */
+        .hero-float-badge {
+            position: absolute;
+            bottom: -18px;
+            left: -18px;
+            background: white;
+            border-radius: 16px;
+            padding: 16px 22px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-float-badge .badge-icon {
+            width: 46px;
+            height: 46px;
+            background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .hero-float-badge .badge-text strong {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+            font-family: var(--font-heading);
+        }
+
+        .hero-float-badge .badge-text span {
+            font-size: 0.78rem;
+            color: #64748b;
+        }
+
+        /* Second floating badge top-right */
+        .hero-float-badge-2 {
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            background: white;
+            border-radius: 16px;
+            padding: 12px 18px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-float-badge-2 .stars {
+            color: #f59e0b;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .hero-float-badge-2 strong {
+            display: block;
+            font-size: 0.9rem;
+            color: #1e293b;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .hero-float-badge-2 span {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        @media (max-width: 900px) {
+            .leistungen-hero .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+
+            .leistungen-hero .hero-text {
+                text-align: center;
+            }
+
+            .hero-cta-group {
+                justify-content: center;
+            }
+
+            .hero-float-badge {
+                bottom: -12px;
+                left: 12px;
+            }
+
+            .hero-float-badge-2 {
+                top: -12px;
+                right: 12px;
+            }
+        }
+
+        .leistungen-hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0.45rem 1.1rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        .leistungen-hero h1 {
+            color: white;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
+        }
+
+        .leistungen-hero p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1.15rem;
+            max-width: 560px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta-group .btn-white {
+            background: white;
+            color: #1e3a8a;
+            font-weight: 600;
+            padding: 0.85rem 2rem;
+            border-radius: 100px;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-cta-group .btn-white:hover {
+            background: transparent;
+            color: white;
+        }
+
+        .hero-cta-group .btn-ghost {
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            padding: 0.85rem 2rem;
+            border-radius: 100px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-cta-group .btn-ghost:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scroll indicator */
+        .hero-scroll {
+            margin-top: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-scroll i {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(6px);
+            }
+        }
+
+        /* --- Section Header Pattern --- */
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-header .eyebrow {
+            display: inline-block;
+            color: #1d4ed8;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-header p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        /* --- Services Grid --- */
+        .leistungen-section {
+            padding: 90px 0;
+            background: #f8faff;
+        }
+
+        .leistungen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            align-items: start;
+        }
+
+        /* --- Service Card --- */
+        .lcard {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(30, 58, 138, 0.07);
+            border: 1px solid rgba(30, 58, 138, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lcard:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.13);
+            border-color: rgba(29, 78, 216, 0.2);
+        }
+
+        .lcard-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lcard-image img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .lcard:hover .lcard-image img {
+            transform: scale(1.05);
+        }
+
+        .lcard-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+        }
+
+        .lcard-body {
+            padding: 28px 28px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lcard-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(29, 78, 216, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #1d4ed8;
+            margin-bottom: 1rem;
+        }
+
+        .lcard-body h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .lcard-body .lcard-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            flex: 1;
+        }
+
+        /* Accordion toggle */
+        .lcard-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1d4ed8;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 0;
+            transition: gap 0.2s ease;
+        }
+
+        .lcard-toggle:hover {
+            gap: 0.75rem;
+        }
+
+        .lcard-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .lcard-toggle.open i {
+            transform: rotate(90deg);
+        }
+
+        /* Extra detail panel */
+        .lcard-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .lcard-detail.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .lcard-detail-inner {
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.07);
+            margin-top: 1.2rem;
+        }
+
+        .lcard-detail-inner p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .lcard-detail-inner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .lcard-detail-inner ul li {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .lcard-detail-inner ul li::before {
+            content: '';
+            display: block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #1d4ed8;
+            flex-shrink: 0;
+        }
+
+        /* Footer link in card */
+        .lcard-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 28px;
+            background: #f8faff;
+            border-top: 1px solid rgba(30, 58, 138, 0.07);
+        }
+
+        .lcard-footer span {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .lcard-footer a {
+            font-size: 0.85rem;
+            color: #1d4ed8;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .lcard-footer a:hover {
+            gap: 0.55rem;
+        }
+
+        /* --- Stats Banner --- */
+        .stats-section {
+            padding: 60px 0;
+            background: white;
+            border-top: 1px solid rgba(30, 58, 138, 0.08);
+            border-bottom: 1px solid rgba(30, 58, 138, 0.08);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #1d4ed8;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Process Section --- */
+        .process-section {
+            padding: 90px 0;
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 2px;
+            background: linear-gradient(90deg, #1d4ed8, #0ea5e9);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            box-shadow: 0 8px 24px rgba(29, 78, 216, 0.35);
+        }
+
+        .process-step h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            padding: 90px 0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #0ea5e9 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.1), transparent 60%);
+        }
+
+        .cta-section .inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1.1rem;
+            max-width: 540px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .leistungen-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- Services Modern Grid --- */
+        .services-modern {
+            padding: 100px 0;
+            background: #f9fbfc;
+        }
+
+        .services-wrapper {
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .center-visual {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .smile-line {
+            width: 160px;
+            height: 80px;
+            border-bottom: 4px solid #1d4ed8;
+            border-radius: 0 0 100px 100px;
+            margin: 0 auto 1.5rem auto;
+            transition: border-color 0.4s ease;
+        }
+
+        .center-visual h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 600;
+            color: #0a2540;
+            margin-bottom: 0.5rem;
+        }
+
+        .center-visual p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .smod-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .service-card-mod {
+            background: white;
+            padding: 38px 36px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transition: all 0.35s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card-mod::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #1d4ed8, #0ea5e9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card-mod:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 56px rgba(30, 58, 138, 0.12);
+            border-color: rgba(29, 78, 216, 0.15);
+        }
+
+        .service-card-mod:hover::before {
+            opacity: 1;
+        }
+
+        .service-card-mod.active {
+            background: #0a2540;
+            color: white;
+            border-color: #0a2540;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(10, 37, 64, 0.3);
+        }
+
+        .service-card-mod.active::before {
+            opacity: 1;
+        }
+
+        .service-card-mod .scard-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: rgba(29, 78, 216, 0.09);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d4ed8;
+            font-size: 1.15rem;
+            margin-bottom: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card-mod.active .scard-icon {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .service-card-mod h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0a2540;
+            margin-bottom: 0.6rem;
+            transition: color 0.3s;
+        }
+
+        .service-card-mod.active h3 {
+            color: white;
+        }
+
+        .service-card-mod p {
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            transition: color 0.3s;
+        }
+
+        .service-card-mod.active p {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .scard-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #1d4ed8;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .service-card-mod.active .scard-link {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .scard-link:hover {
+            gap: 0.65rem;
+        }
+
+        @media (max-width: 640px) {
+            .smod-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- End Services Modern Grid --- */
+    </style>
+
 </head>
 
 <body>
 
-    <!-- Header -->
+    <!-- ======= Header ======= -->
     <header class="site-header">
         <div class="container header-inner">
             <a href="index.html" class="logo">
@@ -22,165 +831,417 @@
                 <span style="color: var(--primary-color);">Nova<strong>Dent</strong></span>
             </a>
 
-            <button class="mobile-menu-btn" aria-label="Menu">
+            <button class="mobile-menu-btn" aria-label="Menü">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html" class="nav-link">Startseite</a></li>
                     <li><a href="leistungen.html" class="nav-link active">Leistungen</a></li>
                     <li><a href="ueber-uns.html" class="nav-link">Über uns</a></li>
                     <li><a href="patienten.html" class="nav-link">Patienteninfos</a></li>
                     <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
-                    <li><a href="kontakt.html" class="btn btn-primary"
-                            style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">Termin vereinbaren</a></li>
+                    <li><a href="kontakt.html" class="nova-btn">Termin vereinbaren</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- Page Header -->
-        <section class="page-header"
-            style="background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.95)), url('https://images.unsplash.com/photo-1606265752439-1ebeb995cd0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; padding: 180px 0 100px; text-align: center; color: white;">
-            <div class="container fade-in">
-                <div
-                    style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; margin-bottom: 1.5rem;">
-                    <i class="fa-solid fa-tooth" style="font-size: 1.8rem; color: var(--accent-color);"></i>
-                </div>
-                <h1 style="font-size: 3.5rem; margin-bottom: 1rem; color: white;">Unsere Leistungen</h1>
-                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.85);">
-                    Umfassende zahnmedizinische Versorgung auf höchstem Niveau, abgestimmt auf Ihre individuellen
-                    Bedürfnisse.
-                </p>
-            </div>
-        </section>
 
-        <!-- Services Grid -->
-        <section class="section">
+        <!-- ======= Hero ======= -->
+        <section class="leistungen-hero">
             <div class="container">
-                <div class="grid grid-3">
+                <div class="hero-layout">
 
-                    <!-- Prophylaxe -->
-                    <div class="card fade-in" style="transition-delay: 0.1s;">
-                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            alt="Prophylaxe"
-                            style="border-radius: 8px; margin-bottom: 1.5rem; height: 200px; object-fit: cover;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-solid fa-tooth" style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                            <h3 class="card-title" style="margin-bottom: 0;">Prophylaxe</h3>
+                    <!-- Text Column -->
+                    <div class="hero-text">
+                        <span class="badge"><i class="fa-solid fa-tooth"></i> Zahnmedizin auf höchstem Niveau</span>
+                        <h1>Unsere Leistungen<br>für Ihre Zahngesundheit</h1>
+                        <p>Umfassende zahnmedizinische Versorgung mit modernsten Methoden – individuell, schonend und
+                            ergebnisorientiert.</p>
+                        <div class="hero-cta-group">
+                            <a href="kontakt.html" class="btn-white"><i class="fa-regular fa-calendar-check"></i> Termin
+                                vereinbaren</a>
+                            <a href="#leistungen" class="btn-ghost">Leistungen entdecken <i
+                                    class="fa-solid fa-arrow-down"></i></a>
                         </div>
-                        <p class="card-desc">Die professionelle Zahnreinigung ist der wichtigste Baustein für
-                            langfristige Zahngesundheit. Wir entfernen harte und weiche Beläge schonend und effektiv.
-                        </p>
+                        <div class="hero-scroll">
+                            <span>Scrollen</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
                     </div>
 
-                    <!-- Implantate -->
-                    <div class="card fade-in" style="transition-delay: 0.2s;">
-                        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            alt="Implantologie"
-                            style="border-radius: 8px; margin-bottom: 1.5rem; height: 200px; object-fit: cover;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-solid fa-screw" style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                            <h3 class="card-title" style="margin-bottom: 0;">Implantologie</h3>
+                    <!-- Image Column -->
+                    <div class="hero-visual">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+                            alt="Professionelle Zahnarztpraxis NovaDent">
+                        <!-- Floating badge bottom-left -->
+                        <div class="hero-float-badge">
+                            <div class="badge-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                            <div class="badge-text">
+                                <strong>6 Leistungen</strong>
+                                <span>Alles unter einem Dach</span>
+                            </div>
                         </div>
-                        <p class="card-desc">Künstliche Zahnwurzeln für einen festen, langlebigen und ästhetisch
-                            perfekten Zahnersatz. Fühlt sich an und funktioniert wie Ihre eigenen Zähne.</p>
-                    </div>
-
-                    <!-- Bleaching -->
-                    <div class="card fade-in" style="transition-delay: 0.3s;">
-                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            alt="Bleaching"
-                            style="border-radius: 8px; margin-bottom: 1.5rem; height: 200px; object-fit: cover;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-regular fa-face-smile-beam"
-                                style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                            <h3 class="card-title" style="margin-bottom: 0;">Bleaching</h3>
+                        <!-- Floating badge top-right -->
+                        <div class="hero-float-badge-2">
+                            <div>
+                                <span class="stars">★★★★★</span>
+                                <strong>4.9 / 5.0</strong>
+                                <span>Patientenbewertung</span>
+                            </div>
                         </div>
-                        <p class="card-desc">Schonende Zahnaufhellung für ein strahlendes und selbstbewusstes Lächeln.
-                            Wir bieten In-Office und Home-Bleaching nach neuesten Standards.</p>
-                    </div>
-
-                    <!-- Ästhetische Zahnmedizin -->
-                    <div class="card fade-in" style="transition-delay: 0.4s;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-solid fa-gem" style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                            <h3 class="card-title" style="margin-bottom: 0;">Ästhetische Zahnmedizin</h3>
-                        </div>
-                        <p class="card-desc">Von hauchdünnen Keramik-Veneers bis hin zu unsichtbaren Füllungen. Wir
-                            korrigieren Zahnfehlstellungen und Verfärbungen sanft und präzise.</p>
-                        <ul style="margin-top: 1rem; color: var(--text-muted); font-size: 0.95rem;">
-                            <li><i class="fa-solid fa-check"
-                                    style="color: var(--primary-color); margin-right: 0.5rem;"></i>Veneers & Lumineers
-                            </li>
-                            <li><i class="fa-solid fa-check"
-                                    style="color: var(--primary-color); margin-right: 0.5rem;"></i>Inlays & Onlays</li>
-                            <li><i class="fa-solid fa-check"
-                                    style="color: var(--primary-color); margin-right: 0.5rem;"></i>Zahnfarbene Füllungen
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Kinderzahnheilkunde -->
-                    <div class="card fade-in" style="transition-delay: 0.5s;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-solid fa-child" style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                            <h3 class="card-title" style="margin-bottom: 0;">Kinderzahnheilkunde</h3>
-                        </div>
-                        <p class="card-desc">Wir führen die Kleinsten spielerisch und einfühlsam an den Zahnarztbesuch
-                            heran, damit Ängste gar nicht erst entstehen.</p>
-                        <ul style="margin-top: 1rem; color: var(--text-muted); font-size: 0.95rem;">
-                            <li><i class="fa-solid fa-check"
-                                    style="color: var(--primary-color); margin-right: 0.5rem;"></i>Putztraining
-                                (Putzschule)</li>
-                            <li><i class="fa-solid fa-check"
-                                    style="color: var(--primary-color); margin-right: 0.5rem;"></i>Fissurenversiegelung
-                            </li>
-                            <li><i class="fa-solid fa-check"
-                                    style="color: var(--primary-color); margin-right: 0.5rem;"></i>Fluoridierung</li>
-                        </ul>
-                    </div>
-
-                    <!-- Parodontologie -->
-                    <div class="card fade-in" style="transition-delay: 0.6s;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-solid fa-shield-halved"
-                                style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                            <h3 class="card-title" style="margin-bottom: 0;">Parodontologie</h3>
-                        </div>
-                        <p class="card-desc">Vorbeugung und Behandlung von Zahnfleischerkrankungen zum langfristigen
-                            Erhalt Ihres Zahnhalteapparates.</p>
-                        <ul style="margin-top: 1rem; color: var(--text-muted); font-size: 0.95rem;">
-                            <li><i class="fa-solid fa-check"
-                                    style="color: var(--primary-color); margin-right: 0.5rem;"></i>Zahnfleischbehandlung
-                            </li>
-                            <li><i class="fa-solid fa-check"
-                                    style="color: var(--primary-color); margin-right: 0.5rem;"></i>Keimtestbestimmung
-                            </li>
-                            <li><i class="fa-solid fa-check"
-                                    style="color: var(--primary-color); margin-right: 0.5rem;"></i>Regenerative
-                                Therapien</li>
-                        </ul>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="section section-bg text-center fade-in">
+        <!-- ======= Stats ======= -->
+        <section class="stats-section">
             <div class="container">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Haben Sie Fragen zu einer Behandlung?</h2>
-                <p class="text-muted" style="margin-bottom: 2rem;">Unser Team berät Sie gerne umfassend und individuell.
-                </p>
-                <a href="kontakt.html" class="btn btn-primary">Beratungstermin vereinbaren</a>
+                <div class="stats-grid">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Jahre Erfahrung</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Leistungsbereiche</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">4.000+</div>
+                        <div class="stat-label">Zufriedene Patienten</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Weiterempfehlungsrate</div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- ======= Services Modern Grid ======= -->
+        <section class="services-modern">
+            <div class="container">
+                <div class="services-wrapper">
+
+                    <div class="center-visual fade-in">
+                        <div class="smile-line"></div>
+                        <h2>Unsere Leistungen im Überblick</h2>
+                        <p>Klicken Sie auf eine Karte, um mehr über die Behandlung zu erfahren.</p>
+                    </div>
+
+                    <div class="smod-grid">
+
+                        <div class="service-card-mod" data-service="prophylaxe">
+                            <div class="scard-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                            <h3>Prophylaxe</h3>
+                            <p>Professionelle Zahnreinigung &amp; Vorsorge für langfristige Zahngesundheit.</p>
+                            <a href="#leistungen" class="scard-link">Mehr erfahren <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+
+                        <div class="service-card-mod" data-service="bleaching">
+                            <div class="scard-icon"><i class="fa-solid fa-sun"></i></div>
+                            <h3>Bleaching</h3>
+                            <p>Schonende Zahnaufhellung mit modernsten, zahnschonenden Verfahren.</p>
+                            <a href="#leistungen" class="scard-link">Mehr erfahren <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+
+                        <div class="service-card-mod" data-service="wurzel">
+                            <div class="scard-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                            <h3>Wurzelbehandlung</h3>
+                            <p>Moderne Endodontie für den langfristigen Erhalt Ihres natürlichen Zahnes.</p>
+                            <a href="#leistungen" class="scard-link">Mehr erfahren <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+
+                        <div class="service-card-mod" data-service="implantat">
+                            <div class="scard-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                            <h3>Implantate</h3>
+                            <p>Fester &amp; ästhetischer Zahnersatz auf höchstem Qualitätsniveau.</p>
+                            <a href="#leistungen" class="scard-link">Mehr erfahren <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Service Cards ======= -->
+        <section class="leistungen-section" id="leistungen">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <span class="eyebrow">Unser Leistungsspektrum</span>
+                    <h2>Was wir für Sie tun können</h2>
+                    <p>Klicken Sie auf eine Leistung, um mehr Details zu erfahren. Alle Behandlungen werden von unserem
+                        erfahrenen Team durchgeführt.</p>
+                </div>
+
+                <div class="leistungen-grid">
+
+                    <!-- Card 1: Prophylaxe -->
+                    <div class="lcard fade-in">
+                        <div class="lcard-image">
+                            <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Prophylaxe">
+                            <span class="lcard-badge">Vorsorge</span>
+                        </div>
+                        <div class="lcard-body">
+                            <div class="lcard-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                            <h3>Prophylaxe</h3>
+                            <p class="lcard-desc">Professionelle Zahnreinigung für langfristige Zahngesundheit –
+                                schonend, gründlich und effektiv.</p>
+                            <button class="lcard-toggle" onclick="toggleLcard(this)" aria-expanded="false">
+                                Details anzeigen <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="lcard-detail">
+                                <div class="lcard-detail-inner">
+                                    <p>Die professionelle Zahnreinigung entfernt harte und weiche Beläge, reduziert das
+                                        Karies- und Parodontitis-Risiko und sorgt für ein langfristig gesundes Lächeln.
+                                    </p>
+                                    <ul>
+                                        <li>Zahnsteinentfernung</li>
+                                        <li>Politur der Zahnoberflächen</li>
+                                        <li>Fluoridierungsbehandlung</li>
+                                        <li>Individuelle Putzberatung</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lcard-footer">
+                            <span>Ab 39 € / Sitzung</span>
+                            <a href="kontakt.html">Termin buchen <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Implantologie -->
+                    <div class="lcard fade-in">
+                        <div class="lcard-image">
+                            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Implantologie">
+                            <span class="lcard-badge">Zahnersatz</span>
+                        </div>
+                        <div class="lcard-body">
+                            <div class="lcard-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                            <h3>Implantologie</h3>
+                            <p class="lcard-desc">Hochwertige Zahnimplantate für festen, langlebigen und ästhetisch
+                                ansprechenden Zahnersatz.</p>
+                            <button class="lcard-toggle" onclick="toggleLcard(this)" aria-expanded="false">
+                                Details anzeigen <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="lcard-detail">
+                                <div class="lcard-detail-inner">
+                                    <p>Moderne Zahnimplantate ersetzen fehlende Zähne dauerhaft. Sie bieten festen Halt,
+                                        natürliche Ästhetik und höchsten Tragekomfort.</p>
+                                    <ul>
+                                        <li>Computergestützte 3D-Planung</li>
+                                        <li>Mini-Implantate möglich</li>
+                                        <li>Knochenaufbau bei Bedarf</li>
+                                        <li>Sofortbelastung möglich</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lcard-footer">
+                            <span>Individuelle Beratung</span>
+                            <a href="kontakt.html">Termin buchen <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Bleaching -->
+                    <div class="lcard fade-in">
+                        <div class="lcard-image">
+                            <img src="img/bleaching.jpg" alt="Bleaching">
+                            <span class="lcard-badge">Ästhetik</span>
+                        </div>
+                        <div class="lcard-body">
+                            <div class="lcard-icon"><i class="fa-solid fa-sun"></i></div>
+                            <h3>Bleaching</h3>
+                            <p class="lcard-desc">Schonende Zahnaufhellung unter zahnärztlicher Aufsicht für ein
+                                strahlendes, selbstbewusstes Lächeln.</p>
+                            <button class="lcard-toggle" onclick="toggleLcard(this)" aria-expanded="false">
+                                Details anzeigen <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="lcard-detail">
+                                <div class="lcard-detail-inner">
+                                    <p>Sicheres Bleaching nach neuesten medizinischen Standards. Wir bieten sowohl
+                                        In-Office als auch Home-Bleaching-Varianten.</p>
+                                    <ul>
+                                        <li>In-Office Power Bleaching</li>
+                                        <li>Individuelle Aufhellungsschienen</li>
+                                        <li>Internal Bleaching bei Einzelzähnen</li>
+                                        <li>Schmelzschonendes Verfahren</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lcard-footer">
+                            <span>Ab 199 € / Behandlung</span>
+                            <a href="kontakt.html">Termin buchen <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Ästhetische Zahnmedizin -->
+                    <div class="lcard fade-in">
+                        <div class="lcard-image">
+                            <img src="img/aesthetik.jpg" alt="Ästhetische Zahnmedizin">
+                            <span class="lcard-badge">Premium</span>
+                        </div>
+                        <div class="lcard-body">
+                            <div class="lcard-icon"><i class="fa-solid fa-star"></i></div>
+                            <h3>Ästhetische Zahnmedizin</h3>
+                            <p class="lcard-desc">Perfekte Ästhetik für Ihr Lächeln – mit modernsten Materialien und
+                                Techniken für ein natürlich schönes Ergebnis.</p>
+                            <button class="lcard-toggle" onclick="toggleLcard(this)" aria-expanded="false">
+                                Details anzeigen <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="lcard-detail">
+                                <div class="lcard-detail-inner">
+                                    <p>Wir korrigieren Fehlstellungen und Verfärbungen sanft und präzise für ein
+                                        natürlich schönes, strahlendes Lächeln.</p>
+                                    <ul>
+                                        <li>Veneers &amp; Lumineers</li>
+                                        <li>Inlays &amp; Onlays (Keramik)</li>
+                                        <li>Zahnfarbene Kompositfüllungen</li>
+                                        <li>Zahnfleisch-Korrekturen</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lcard-footer">
+                            <span>Individuelle Beratung</span>
+                            <a href="kontakt.html">Termin buchen <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Kinderzahnheilkunde -->
+                    <div class="lcard fade-in">
+                        <div class="lcard-image">
+                            <img src="img/kinder.jpg" alt="Kinderzahnheilkunde">
+                            <span class="lcard-badge">Kinder</span>
+                        </div>
+                        <div class="lcard-body">
+                            <div class="lcard-icon"><i class="fa-solid fa-face-smile"></i></div>
+                            <h3>Kinderzahnheilkunde</h3>
+                            <p class="lcard-desc">Einfühlsame Behandlung für unsere kleinsten Patienten – in entspannter
+                                Atmosphäre ohne Angst.</p>
+                            <button class="lcard-toggle" onclick="toggleLcard(this)" aria-expanded="false">
+                                Details anzeigen <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="lcard-detail">
+                                <div class="lcard-detail-inner">
+                                    <p>Frühzeitige Vorsorge verhindert spätere Probleme. Wir führen Kinder spielerisch
+                                        und angstfrei an den Zahnarztbesuch heran.</p>
+                                    <ul>
+                                        <li>Putztraining (Putzschule)</li>
+                                        <li>Fissurenversiegelung</li>
+                                        <li>Fluoridierung &amp; Vorsorge</li>
+                                        <li>Milchzahn-Behandlungen</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lcard-footer">
+                            <span>Krankenkasse übernimmt</span>
+                            <a href="kontakt.html">Termin buchen <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Parodontologie -->
+                    <div class="lcard fade-in">
+                        <div class="lcard-image">
+                            <img src="img/parodontologie.jpg" alt="Parodontologie">
+                            <span class="lcard-badge">Therapie</span>
+                        </div>
+                        <div class="lcard-body">
+                            <div class="lcard-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                            <h3>Parodontologie</h3>
+                            <p class="lcard-desc">Vorbeugung und Behandlung von Zahnfleischerkrankungen für
+                                langfristigen Zahnerhalt und gesundes Gewebe.</p>
+                            <button class="lcard-toggle" onclick="toggleLcard(this)" aria-expanded="false">
+                                Details anzeigen <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="lcard-detail">
+                                <div class="lcard-detail-inner">
+                                    <p>Wir behandeln Entzündungen des Zahnhalteapparates mit modernen, minimalinvasiven
+                                        Methoden für einen festen Biss.</p>
+                                    <ul>
+                                        <li>Minimalinvasive Paro-Therapie</li>
+                                        <li>Keimbestimmung &amp; Diagnose</li>
+                                        <li>Regenerative Therapien</li>
+                                        <li>Langzeit-Betreuung (Recall)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lcard-footer">
+                            <span>Kassenleistung möglich</span>
+                            <a href="kontakt.html">Termin buchen <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= How It Works ======= -->
+        <section class="process-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <span class="eyebrow">So einfach geht's</span>
+                    <h2>Ihr Weg zur Behandlung</h2>
+                    <p>Von der ersten Anfrage bis zur erfolgreichen Behandlung – wir begleiten Sie bei jedem Schritt.
+                    </p>
+                </div>
+
+                <div class="process-steps">
+                    <div class="process-step fade-in">
+                        <div class="step-circle">1</div>
+                        <h4>Termin vereinbaren</h4>
+                        <p>Rufen Sie uns an oder buchen Sie online in wenigen Sekunden.</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <div class="step-circle">2</div>
+                        <h4>Erstgespräch & Diagnose</h4>
+                        <p>Ein ausführliches Gespräch und moderne Diagnostik für den besten Behandlungsplan.</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <div class="step-circle">3</div>
+                        <h4>Individuelle Behandlung</h4>
+                        <p>Schonende, präzise Behandlung mit modernsten Methoden und Materialien.</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <div class="step-circle">4</div>
+                        <h4>Nachsorge & Kontrolle</h4>
+                        <p>Regelmäßige Kontrolltermine sichern Ihren langfristigen Behandlungserfolg.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= CTA ======= -->
+        <section class="cta-section">
+            <div class="container inner">
+                <h2>Haben Sie Fragen zu einer Behandlung?</h2>
+                <p>Unser Team berät Sie gerne umfassend, persönlich und kostenfrei zu allen Behandlungen.</p>
+                <div class="hero-cta-group">
+                    <a href="kontakt.html" class="btn-white"><i class="fa-regular fa-calendar-check"></i>
+                        Beratungstermin vereinbaren</a>
+                    <a href="tel:15566284478" class="btn-ghost"><i class="fa-solid fa-phone"></i> 15566284478</a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer -->
+    <!-- ======= Footer ======= -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
@@ -196,13 +1257,13 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>Quick Links</h4>
+                    <h4>Schnellzugriff</h4>
                     <ul class="footer-links">
                         <li><a href="index.html">Startseite</a></li>
                         <li><a href="ueber-uns.html">Über unser Team</a></li>
                         <li><a href="leistungen.html">Leistungsspektrum</a></li>
-                        <li><a href="patienten.html">Patienten & FAQ</a></li>
-                        <li><a href="kontakt.html">Kontakt & Anfahrt</a></li>
+                        <li><a href="patienten.html">Patienten &amp; FAQ</a></li>
+                        <li><a href="kontakt.html">Kontakt &amp; Anfahrt</a></li>
                     </ul>
                 </div>
 
@@ -214,6 +1275,10 @@
                         </li>
                         <li style="display: flex; justify-content: space-between;"><span>Mittwoch:</span> <span>08:00 -
                                 14:00 Uhr</span></li>
+                        <li
+                            style="display: flex; justify-content: space-between; margin-top: 0.5rem; color: var(--accent-color);">
+                            <span>Termine nach Vereinbarung</span>
+                        </li>
                     </ul>
                 </div>
 
@@ -226,19 +1291,68 @@
                         <li><i class="fa-solid fa-phone"></i>
                             <div><a href="tel:15566284478" style="color: inherit;">15566284478</a></div>
                         </li>
+                        <li><i class="fa-solid fa-envelope"></i>
+                            <div><a href="mailto:info@novadent.de" style="color: inherit;">info@novadent.de</a></div>
+                        </li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 NovaDent Praxis. Alle Rechte vorbehalten. | <a href="impressum.html"
-                        style="color: inherit; text-decoration: underline;">Impressum</a> | <a href="datenschutz.html"
-                        style="color: inherit; text-decoration: underline;">Datenschutz</a></p>
+                <p>&copy; 2026 NovaDent Praxis. Alle Rechte vorbehalten. |
+                    <a href="impressum.html" style="color: inherit; text-decoration: underline;">Impressum</a> |
+                    <a href="datenschutz.html" style="color: inherit; text-decoration: underline;">Datenschutz</a>
+                </p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+
+    <script>
+        // Accordion toggle for service cards
+        function toggleLcard(btn) {
+            const detail = btn.nextElementSibling;
+            const isOpen = detail.classList.contains('open');
+
+            // Close all open ones
+            document.querySelectorAll('.lcard-detail.open').forEach(d => {
+                d.classList.remove('open');
+                const prevBtn = d.previousElementSibling;
+                if (prevBtn) {
+                    prevBtn.classList.remove('open');
+                    prevBtn.setAttribute('aria-expanded', 'false');
+                    prevBtn.childNodes[0].textContent = 'Details anzeigen ';
+                }
+            });
+
+            // Open clicked one (unless it was already open)
+            if (!isOpen) {
+                detail.classList.add('open');
+                btn.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+                btn.childNodes[0].textContent = 'Details ausblenden ';
+            }
+        }
+
+        // Service Modern Grid Logic
+        const cards = document.querySelectorAll('.service-card-mod');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove active class from all cards
+                cards.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked card
+                card.classList.add('active');
+            });
+        });
+    </script>
+
+    <!-- Floating Contact Button -->
+    <a href="kontakt.html" class="nova-btn floating-btn">
+        Termin
+    </a>
 </body>
 
 </html>

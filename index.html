@@ -25,19 +25,18 @@
                 <span style="color: var(--primary-color);">Nova<strong>Dent</strong></span>
             </a>
 
-            <button class="mobile-menu-btn" aria-label="Menu">
+            <button class="mobile-menu-btn" aria-label="Menü">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="index.html" class="nav-link active">Startseite</a></li>
                     <li><a href="leistungen.html" class="nav-link">Leistungen</a></li>
                     <li><a href="ueber-uns.html" class="nav-link">Über uns</a></li>
                     <li><a href="patienten.html" class="nav-link">Patienteninfos</a></li>
                     <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
-                    <li><a href="kontakt.html" class="btn btn-primary"
-                            style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">Termin vereinbaren</a></li>
+                    <li><a href="kontakt.html" class="nova-btn">Termin vereinbaren</a></li>
                 </ul>
             </nav>
         </div>
@@ -59,7 +58,7 @@
                         Ihre individuellen Bedürfnisse.
                     </p>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <a href="kontakt.html" class="btn btn-primary">Jetzt Termin vereinbaren <i
+                        <a href="kontakt.html" class="nova-btn">Jetzt Termin vereinbaren <i
                                 class="fa-regular fa-calendar-check" style="margin-left: 0.5rem;"></i></a>
                         <a href="leistungen.html" class="btn btn-outline">Unsere Leistungen</a>
                     </div>
@@ -76,34 +75,41 @@
             </div>
         </section>
 
-        <!-- Trust / Features Section -->
-        <section class="section section-bg">
+        <!-- Why Us Creative Section -->
+        <section class="why-us-creative">
             <div class="container">
-                <div class="text-center mb-xl fade-in">
-                    <h2 style="font-size: 2.5rem;">Warum Sie uns vertrauen können</h2>
-                    <p class="text-muted" style="max-width: 600px; margin: 1rem auto 0;">Ihre Zahngesundheit steht im
-                        Mittelpunkt unserer Arbeit.</p>
-                </div>
+                <h2>Warum Sie uns vertrauen können</h2>
+                <p class="subtitle">Ihre Zahngesundheit steht im Mittelpunkt unserer Arbeit.</p>
 
-                <div class="grid grid-3">
-                    <div class="card fade-in" style="transition-delay: 0.1s;">
-                        <div class="card-icon"><i class="fa-solid fa-user-doctor"></i></div>
-                        <h3 class="card-title">Erfahrenes Team</h3>
-                        <p class="card-desc">Unsere Spezialisten bilden sich kontinuierlich weiter, um Ihnen die
-                            bestmögliche Behandlung nach neuesten Standards zu bieten.</p>
+                <div class="creative-cards">
+
+                    <div class="creative-card">
+                        <div class="circle">🦷</div>
+                        <h3>Erfahrenes Team</h3>
+                        <p>
+                            Unsere Spezialisten arbeiten mit höchster Präzision und bilden sich
+                            kontinuierlich weiter, um Ihnen modernste Behandlungsmethoden zu bieten.
+                        </p>
                     </div>
-                    <div class="card fade-in" style="transition-delay: 0.2s;">
-                        <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
-                        <h3 class="card-title">Sanfte Behandlung</h3>
-                        <p class="card-desc">Angstpatienten sind bei uns willkommen. Wir legen größten Wert auf eine
-                            schmerzfreie und entspannte Behandlungsmethodik.</p>
+
+                    <div class="creative-card">
+                        <div class="circle">🌿</div>
+                        <h3>Sanfte Behandlung</h3>
+                        <p>
+                            Wir sorgen für eine entspannte Atmosphäre und besonders
+                            schonende Behandlung – auch für Angstpatienten.
+                        </p>
                     </div>
-                    <div class="card fade-in" style="transition-delay: 0.3s;">
-                        <div class="card-icon"><i class="fa-solid fa-microscope"></i></div>
-                        <h3 class="card-title">Moderne Technik</h3>
-                        <p class="card-desc">Wir investieren in hochmoderne Ausstattung wie 3D-Röntgen und intraorale
-                            Scanner für präzisere Diagnosen und Ergebnisse.</p>
+
+                    <div class="creative-card">
+                        <div class="circle">✨</div>
+                        <h3>Modernste Technik</h3>
+                        <p>
+                            Innovative 3D-Diagnostik und digitale Verfahren garantieren
+                            höchste Präzision und optimale Ergebnisse.
+                        </p>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -195,7 +201,7 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>Quick Links</h4>
+                    <h4>Schnellzugriff</h4>
                     <ul class="footer-links">
                         <li><a href="index.html">Startseite</a></li>
                         <li><a href="ueber-uns.html">Über unser Team</a></li>
@@ -257,6 +263,11 @@
 
     <!-- Core Script -->
     <script src="js/main.js"></script>
+    <!-- Floating Contact Button -->
+    <a href="kontakt.html" class="nova-btn floating-btn">
+        Termin
+    </a>
+
 </body>
 
 </html>
