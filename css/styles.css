@@ -132,6 +132,35 @@ img {
   margin-bottom: var(--spacing-xl);
 }
 
+.hero-subtitle {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+.hero-text {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .grid {
   display: grid;
   gap: 2rem;
@@ -338,6 +367,40 @@ img {
     font-size: 24px;
   }
 
+  .hero-section {
+    padding-top: 100px !important;
+    padding-bottom: 40px !important;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem !important;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image {
+    margin-top: 2rem;
+  }
+
+  .hero-image img {
+    aspect-ratio: 16/9 !important;
+  }
+
   .creative-card {
     width: 100%;
     margin-bottom: 20px;
@@ -345,11 +408,19 @@ img {
   }
 
   .circle {
-    height: 120px;
+    height: 100px;
   }
 
-  .hero-image {
-    margin-top: 2rem;
+  .section {
+    padding: var(--spacing-lg) 0 !important;
+  }
+
+  .section h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .grid {
+    gap: 1.5rem !important;
   }
 }
 
