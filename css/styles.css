@@ -341,6 +341,15 @@ img {
   .creative-card {
     width: 100%;
     margin-bottom: 20px;
+    padding: 30px 20px;
+  }
+
+  .circle {
+    height: 120px;
+  }
+
+  .hero-image {
+    margin-top: 2rem;
   }
 }
 
