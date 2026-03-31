@@ -929,36 +929,46 @@
 
                     <div class="smod-grid">
 
-                        <div class="service-card-mod" data-service="prophylaxe">
+                        <div class="service-card-mod" onclick="openService('prophylaxe')">
                             <div class="scard-icon"><i class="fa-solid fa-shield-heart"></i></div>
                             <h3>Prophylaxe</h3>
                             <p>Professionelle Zahnreinigung &amp; Vorsorge für langfristige Zahngesundheit.</p>
-                            <a href="#leistungen" class="scard-link">Mehr erfahren <i
-                                    class="fa-solid fa-arrow-right"></i></a>
+                            <span class="scard-link">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
 
-                        <div class="service-card-mod" data-service="bleaching">
+                        <div class="service-card-mod" onclick="openService('bleaching')">
                             <div class="scard-icon"><i class="fa-solid fa-sun"></i></div>
                             <h3>Bleaching</h3>
                             <p>Schonende Zahnaufhellung mit modernsten, zahnschonenden Verfahren.</p>
-                            <a href="#leistungen" class="scard-link">Mehr erfahren <i
-                                    class="fa-solid fa-arrow-right"></i></a>
+                            <span class="scard-link">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
 
-                        <div class="service-card-mod" data-service="wurzel">
-                            <div class="scard-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                            <h3>Wurzelbehandlung</h3>
-                            <p>Moderne Endodontie für den langfristigen Erhalt Ihres natürlichen Zahnes.</p>
-                            <a href="#leistungen" class="scard-link">Mehr erfahren <i
-                                    class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-
-                        <div class="service-card-mod" data-service="implantat">
+                        <div class="service-card-mod" onclick="openService('implantat')">
                             <div class="scard-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                             <h3>Implantate</h3>
                             <p>Fester &amp; ästhetischer Zahnersatz auf höchstem Qualitätsniveau.</p>
-                            <a href="#leistungen" class="scard-link">Mehr erfahren <i
-                                    class="fa-solid fa-arrow-right"></i></a>
+                            <span class="scard-link">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+
+                        <div class="service-card-mod" onclick="openService('aesthetik')">
+                            <div class="scard-icon"><i class="fa-solid fa-star"></i></div>
+                            <h3>Ästhetische Zahnmedizin</h3>
+                            <p>Veneers, Füllungen und Korrekturen für ein perfektes, natürliches Lächeln.</p>
+                            <span class="scard-link">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+
+                        <div class="service-card-mod" onclick="openService('kinder')">
+                            <div class="scard-icon"><i class="fa-solid fa-face-smile"></i></div>
+                            <h3>Kinderzahnheilkunde</h3>
+                            <p>Einfühlsame und angstfreie Behandlung für unsere kleinsten Patienten.</p>
+                            <span class="scard-link">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+
+                        <div class="service-card-mod" onclick="openService('parodontologie')">
+                            <div class="scard-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                            <h3>Parodontologie</h3>
+                            <p>Vorbeugung und Behandlung von Zahnfleischerkrankungen für einen festen Biss.</p>
+                            <span class="scard-link">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></span>
                         </div>
 
                     </div>
@@ -980,7 +990,7 @@
                 <div class="leistungen-grid">
 
                     <!-- Card 1: Prophylaxe -->
-                    <div class="lcard fade-in">
+                    <div class="lcard fade-in" id="service-prophylaxe">
                         <div class="lcard-image">
                             <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="Prophylaxe">
@@ -1015,7 +1025,7 @@
                     </div>
 
                     <!-- Card 2: Implantologie -->
-                    <div class="lcard fade-in">
+                    <div class="lcard fade-in" id="service-implantat">
                         <div class="lcard-image">
                             <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="Implantologie">
@@ -1049,7 +1059,7 @@
                     </div>
 
                     <!-- Card 3: Bleaching -->
-                    <div class="lcard fade-in">
+                    <div class="lcard fade-in" id="service-bleaching">
                         <div class="lcard-image">
                             <img src="img/bleaching.jpg" alt="Bleaching">
                             <span class="lcard-badge">Ästhetik</span>
@@ -1081,8 +1091,10 @@
                         </div>
                     </div>
 
-                    <!-- Card 4: Ästhetische Zahnmedizin -->
-                    <div class="lcard fade-in">
+
+
+                    <!-- Card 5: Ästhetische Zahnmedizin -->
+                    <div class="lcard fade-in" id="service-aesthetik">
                         <div class="lcard-image">
                             <img src="img/aesthetik.jpg" alt="Ästhetische Zahnmedizin">
                             <span class="lcard-badge">Premium</span>
@@ -1114,8 +1126,8 @@
                         </div>
                     </div>
 
-                    <!-- Card 5: Kinderzahnheilkunde -->
-                    <div class="lcard fade-in">
+                    <!-- Card 6: Kinderzahnheilkunde -->
+                    <div class="lcard fade-in" id="service-kinder">
                         <div class="lcard-image">
                             <img src="img/kinder.jpg" alt="Kinderzahnheilkunde">
                             <span class="lcard-badge">Kinder</span>
@@ -1147,8 +1159,8 @@
                         </div>
                     </div>
 
-                    <!-- Card 6: Parodontologie -->
-                    <div class="lcard fade-in">
+                    <!-- Card 7: Parodontologie -->
+                    <div class="lcard fade-in" id="service-parodontologie">
                         <div class="lcard-image">
                             <img src="img/parodontologie.jpg" alt="Parodontologie">
                             <span class="lcard-badge">Therapie</span>
@@ -1342,6 +1354,33 @@
                 card.classList.add('active');
             });
         });
+
+        // Function to scroll to a service and open its accordion
+        function openService(serviceId) {
+            const target = document.getElementById('service-' + serviceId);
+            if (!target) return;
+
+            // Smooth scroll to target
+            const headerOffset = 100;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+
+            // Open the accordion
+            const btn = target.querySelector('.lcard-toggle');
+            const detail = target.querySelector('.lcard-detail');
+
+            if (btn && detail && !detail.classList.contains('open')) {
+                // Short timeout to allow scrolling to finish or feel more natural
+                setTimeout(() => {
+                    toggleLcard(btn);
+                }, 400);
+            }
+        }
     </script>
 
     <!-- Floating Contact Button -->
